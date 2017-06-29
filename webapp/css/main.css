@@ -1,0 +1,126 @@
+.keys {
+    position: relative;
+    width: 80px;
+    top: 120px;
+    margin: auto;
+    list-style: none;
+}
+
+.key {
+    cursor: pointer;
+    position: relative;
+    width: 78px;
+    height: 78px;
+    padding-top: 10px;
+    font-size: 20px;
+    overflow: hidden;
+    margin-top: 6px;
+    border: 1px solid;
+    border-radius: 8px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-transition: color 0.25s ease,
+    background 0.25s ease;
+}
+
+.key.activated {
+    background: #fc3232;
+    color: #222;
+    background-clip: padding-box;
+    font-weight: 300;
+    cursor: pointer;
+    -webkit-transition: color 0s ease,
+    background 0s ease;
+}
+
+.key:nth-child(2n+2) {
+    position: absolute;
+    bottom: 0;
+    left: 125px;
+}
+
+.key:nth-child(4n) {
+    left: -45px;
+}
+
+.key span {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#history-output {
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.panic-button {
+    position: absolute;
+    width: 440px;
+    height: 365px;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    background: #b3b3b3;
+    box-shadow: 0 10px 0 #888888,
+    0 20px 0 #888888,
+    0 30px 0 #888888,
+    -10px 40px 0 hsla(0, 0%, 0%, .2);
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+}
+
+.panic-button:before {
+    position: absolute;
+    top: -95px;
+    left: 40px;
+    width: 360px;
+    height: 305px;
+    border-radius: inherit;
+    color: #ac2925;
+    background-color: currentColor;
+    box-shadow: 0 30px 0 #c9302c,
+    0 60px 0 #c9302c,
+    0 90px 0 #c9302c,
+    0 110px 0 #c9302c,
+    -25px 140px 0 hsla(0, 0%, 0%, .1);
+    content: '';
+    transition: all 50ms;
+}
+
+.panic-button.active:before {
+    top: 0;
+    box-shadow: 0 16px #c54c57,
+    0 16px #c54c57,
+    0 16px #c54c57,
+    0 16px #c54c57,
+    0 16px 0 #c54c57,
+    -5px 20px 0 hsla(0, 0%, 0%, .1);
+}
+
+.panic-button.active:after {
+    position: absolute;
+    top: 95px;
+    left: 40px;
+    width: 360px;
+    height: 305px;
+    content: 'Kill Switch';
+    color: white;
+    font-size: 500%;
+    transition: all 50ms;
+}
+
+.panic-button:after {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    width: 360px;
+    height: 305px;
+    content: 'Kill Switch';
+    color: white;
+    font-size: 500%;
+    transition: all 50ms;
+}

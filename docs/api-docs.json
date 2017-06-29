@@ -1,0 +1,1340 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Control a Lego Mindstorms robot through this REST API.",
+        "version": "1.0.0",
+        "title": "Lego Mindstorms REST API",
+        "license": {
+            "name": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    },
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "config",
+            "description": "Configuration of the robot"
+        },
+        {
+            "name": "motor",
+            "description": "Controls the motor(s)"
+        },
+        {
+            "name": "movement",
+            "description": "Controls the movement of the robot"
+        },
+        {
+            "name": "sensor",
+            "description": "Sensor-related operations"
+        },
+        {
+            "name": "action",
+            "description": "Action-related operations"
+        },
+        {
+            "name": "sound",
+            "description": "Sound-related operations"
+        },
+        {
+            "name": "image",
+            "description": "Image-related operations"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/config": {
+            "post": {
+                "tags": [
+                    "config"
+                ],
+                "summary": "Set the configuration of the robot",
+                "description": "",
+                "operationId": "setAllConfig",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "RobotConfig object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RobotConfig"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "config"
+                ],
+                "summary": "Get the configuration of the robot",
+                "description": "",
+                "operationId": "getAllConfig",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Configuration of the robot",
+                        "schema": {
+                            "$ref": "#/definitions/RobotConfig"
+                        }
+                    }
+                }
+            }
+        },
+        "/motor/config": {
+            "post": {
+                "tags": [
+                    "motor"
+                ],
+                "summary": "Create a list of motors to control",
+                "description": "",
+                "operationId": "setMotorConfig",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "MovementConfig object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MotorConfig"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "motor"
+                ],
+                "summary": "Get a list of motors",
+                "description": "",
+                "operationId": "getMotorConfig",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/MotorConfig"
+                        }
+                    }
+                }
+            }
+        },
+        "/movement/config": {
+            "post": {
+                "tags": [
+                    "movement"
+                ],
+                "summary": "Defines the motor address and type of a side",
+                "description": "",
+                "operationId": "setMovementConfig",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "MovementConfig object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MovementConfig"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "movement"
+                ],
+                "summary": "Get current movement config",
+                "description": "",
+                "operationId": "getMovementConfig",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/MovementConfig"
+                        }
+                    }
+                }
+            }
+        },
+        "/sensor/config": {
+            "post": {
+                "tags": [
+                    "sensor"
+                ],
+                "summary": "Creates a list of sensors to get values from",
+                "description": "",
+                "operationId": "setSensorConfig",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "SensorConfig object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SensorConfig"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "sensor"
+                ],
+                "summary": "Get a list of sensors",
+                "description": "",
+                "operationId": "getSensorConfig",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/SensorConfig"
+                        }
+                    }
+                }
+            }
+        },
+        "/action/config": {
+            "post": {
+                "tags": [
+                    "action"
+                ],
+                "summary": "Defines an action to execute when compared to a sensor value",
+                "description": "",
+                "operationId": "sensorAction",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "List of ActionConfig object",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ActionConfig"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/ActionList"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "action"
+                ],
+                "summary": "Get current action config",
+                "description": "",
+                "operationId": "getActionConfig",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ActionConfig"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/motor/killswitch": {
+            "post": {
+                "tags": [
+                    "motor"
+                ],
+                "summary": "Shut off all motors",
+                "description": "",
+                "operationId": "stopAllMotors",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    }
+                }
+            }
+        },
+        "/motor/{addresses}/{duty_cycle}": {
+            "post": {
+                "tags": [
+                    "motor"
+                ],
+                "summary": "Starts or stops one or several motor(s)",
+                "description": "",
+                "operationId": "startMotor",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "addresses",
+                        "in": "path",
+                        "description": "Address(es) of the motor(s) to start/stop (e.g. use AB for motors on address A and B or only A for address A)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "duty_cycle",
+                        "in": "path",
+                        "description": "Set the duty cycle of the motor (from -100 to 100, 0 to stop)",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Motor address not yet defined",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/motor/{address}": {
+            "get": {
+                "tags": [
+                    "motor"
+                ],
+                "summary": "Get the motor status from a specific address",
+                "description": "",
+                "operationId": "getMotorValues",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "description": "Address of the motor to get the status from",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "outA",
+                            "outB",
+                            "outC",
+                            "outD"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/SpeedState"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "motor"
+                ],
+                "summary": "Delete the motor by a specific address",
+                "description": "",
+                "operationId": "deleteMotor",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "description": "Address of the motor to delete",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "outA",
+                            "outB",
+                            "outC",
+                            "outD"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/SpeedState"
+                        }
+                    },
+                    "400": {
+                        "description": "Motor address unknown",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/movement/{direction}/{speed}": {
+            "post": {
+                "tags": [
+                    "movement"
+                ],
+                "summary": "Move robot towards a specific direction",
+                "description": "",
+                "operationId": "moveRobot",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "direction",
+                        "in": "path",
+                        "description": "Direction",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "forward",
+                            "backward",
+                            "left",
+                            "right"
+                        ]
+                    },
+                    {
+                        "name": "speed",
+                        "in": "path",
+                        "description": "Set the speed (from 0 to 100, 0 to stop) of the motor",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Movement"
+                        }
+                    }
+                }
+            }
+        },
+        "/sensor/{address}": {
+            "get": {
+                "tags": [
+                    "sensor"
+                ],
+                "summary": "Get the sensor value from an address",
+                "description": "",
+                "operationId": "getSensorValue",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "description": "Address of the sensor to get the value from",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "in1",
+                            "in2",
+                            "in3",
+                            "in4"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/SensorValue"
+                        }
+                    },
+                    "400": {
+                        "description": "Sensor address unknown",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "sensor"
+                ],
+                "summary": "Delete the sensor by a specific address",
+                "description": "",
+                "operationId": "deleteSensor",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "path",
+                        "description": "Address of the sensor to delete",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "in1",
+                            "in2",
+                            "in3",
+                            "in4"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Sensor address unknown",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/action/{actionId}": {
+            "post": {
+                "tags": [
+                    "action"
+                ],
+                "summary": "Insert an action before the given action id",
+                "description": "",
+                "operationId": "insertActionAtPosition",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "actionId",
+                        "in": "path",
+                        "description": "Action id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "ActionConfig object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ActionConfig"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "action"
+                ],
+                "summary": "Get action for a specific action id",
+                "description": "",
+                "operationId": "getActionForId",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "actionId",
+                        "in": "path",
+                        "description": "Action id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Action id unknown",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "action"
+                ],
+                "summary": "Delete action for a specific action id",
+                "description": "",
+                "operationId": "deleteActionForId",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "actionId",
+                        "in": "path",
+                        "description": "Action id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Action id out of range",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/sound/tts/{text}": {
+            "post": {
+                "tags": [
+                    "sound"
+                ],
+                "summary": "Execute text-to-speech",
+                "description": "",
+                "operationId": "speak",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "text",
+                        "in": "path",
+                        "description": "Text to speech",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    }
+                }
+            }
+        },
+        "/sound": {
+            "post": {
+                "tags": [
+                    "sound"
+                ],
+                "summary": "Add a .wav file",
+                "description": "",
+                "operationId": "addSound",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "upload",
+                        "in": "formData",
+                        "description": "Send a .wav file",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "400": {
+                        "description": "No file selected",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/sound/{soundId}": {
+            "post": {
+                "tags": [
+                    "sound"
+                ],
+                "summary": "Plays a specific sound",
+                "description": "",
+                "operationId": "playSound",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "soundId",
+                        "in": "path",
+                        "description": "ID of the sound to play",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Sound ID out of range",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "sound"
+                ],
+                "summary": "Delete a specific sound by id",
+                "description": "",
+                "operationId": "deleteSound",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "soundId",
+                        "in": "path",
+                        "description": "ID of the sound to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Sound ID out of range",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/image": {
+            "post": {
+                "tags": [
+                    "image"
+                ],
+                "summary": "Add a .bmp file",
+                "description": "",
+                "operationId": "addImage",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "upload",
+                        "in": "formData",
+                        "description": "Send a .bmp file",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "400": {
+                        "description": "No file selected",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/image/{imageId}/{timeInSec}": {
+            "post": {
+                "tags": [
+                    "image"
+                ],
+                "summary": "Display a specific image for an amount of time",
+                "description": "",
+                "operationId": "displayImage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "imageId",
+                        "in": "path",
+                        "description": "ID of the image to display",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "timeInSec",
+                        "in": "path",
+                        "description": "Time in seconds (0 for infinite)",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Image ID out of range",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/image/{imageId}": {
+            "delete": {
+                "tags": [
+                    "image"
+                ],
+                "summary": "Delete a specific image by id",
+                "description": "",
+                "operationId": "deleteImage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "imageId",
+                        "in": "path",
+                        "description": "ID of the image to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Image ID out of range",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "RobotConfig": {
+            "type": "object",
+            "properties": {
+                "movement": {
+                    "$ref": "#/definitions/MovementConfig"
+                },
+                "motors": {
+                    "$ref": "#/definitions/MotorConfig"
+                },
+                "sensors": {
+                    "$ref": "#/definitions/SensorConfig"
+                },
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ActionConfig"
+                    }
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "sounds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "MovementConfig": {
+            "type": "object",
+            "properties": {
+                "left": {
+                    "$ref": "#/definitions/SideConfig"
+                },
+                "right": {
+                    "$ref": "#/definitions/SideConfig"
+                }
+            }
+        },
+        "SideConfig": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "enum": [
+                        "outA",
+                        "outB",
+                        "outC",
+                        "outD"
+                    ]
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "large",
+                        "medium"
+                    ]
+                }
+            }
+        },
+        "MotorConfig": {
+            "type": "object",
+            "properties": {
+                "outA": {
+                    "type": "string",
+                    "enum": [
+                        "large",
+                        "medium"
+                    ]
+                },
+                "outB": {
+                    "type": "string",
+                    "enum": [
+                        "large",
+                        "medium"
+                    ]
+                },
+                "outC": {
+                    "type": "string",
+                    "enum": [
+                        "large",
+                        "medium"
+                    ]
+                },
+                "outD": {
+                    "type": "string",
+                    "enum": [
+                        "large",
+                        "medium"
+                    ]
+                }
+            }
+        },
+        "SensorConfig": {
+            "type": "object",
+            "properties": {
+                "in1": {
+                    "type": "string",
+                    "enum": [
+                        "touch",
+                        "color",
+                        "gyro",
+                        "infrared",
+                        "ultrasonic"
+                    ]
+                },
+                "in2": {
+                    "type": "string",
+                    "enum": [
+                        "touch",
+                        "color",
+                        "gyro",
+                        "infrared",
+                        "ultrasonic"
+                    ]
+                },
+                "in3": {
+                    "type": "string",
+                    "enum": [
+                        "touch",
+                        "color",
+                        "gyro",
+                        "infrared",
+                        "ultrasonic"
+                    ]
+                },
+                "in4": {
+                    "type": "string",
+                    "enum": [
+                        "touch",
+                        "color",
+                        "gyro",
+                        "infrared",
+                        "ultrasonic"
+                    ]
+                }
+            }
+        },
+        "ActionConfig": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "enum": [
+                        "in1",
+                        "in2",
+                        "in3",
+                        "in4"
+                    ]
+                },
+                "action": {
+                    "type": "string",
+                    "enum": [
+                        "is_pressed",
+                        "distance_centimeters",
+                        "proximity",
+                        "rate",
+                        "angle",
+                        "color"
+                    ]
+                },
+                "condition": {
+                    "type": "object",
+                    "properties": {
+                        "comparison": {
+                            "type": "string",
+                            "description": "Python comparison operator",
+                            "enum": [
+                                "==",
+                                "!=",
+                                ">",
+                                "<",
+                                ">=",
+                                "<=",
+                                "between"
+                            ]
+                        },
+                        "compare_with": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "To compare with this value"
+                        },
+                        "compare_with2": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "Only when comparison operator is between; to compare values within a given range"
+                        }
+                    }
+                },
+                "when_true": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ApiCall"
+                    }
+                },
+                "when_false": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ApiCall"
+                    }
+                }
+            }
+        },
+        "ApiCall": {
+            "type": "object",
+            "properties": {
+                "method": {
+                    "type": "string",
+                    "enum": [
+                        "POST",
+                        "GET",
+                        "DELETE"
+                    ],
+                    "description": "HTTP Methods"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL to call"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "HTTP request body (not required, only for POST method)"
+                },
+                "wait": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "How long should we wait (in seconds) before performing another action? (Not required)"
+                }
+            }
+        },
+        "SensorValue": {
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "touch",
+                        "color",
+                        "gyro",
+                        "infrared",
+                        "ultrasonic"
+                    ]
+                }
+            }
+        },
+        "SpeedState": {
+            "type": "object",
+            "properties": {
+                "state": {
+                    "type": "string",
+                    "enum": [
+                        "running",
+                        "ramping",
+                        "holding",
+                        "overloaded",
+                        "stalled"
+                    ]
+                },
+                "duty_cycle": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "Movement": {
+            "type": "object",
+            "properties": {
+                "state": {
+                    "type": "string",
+                    "enum": [
+                        "forward",
+                        "backward",
+                        "left",
+                        "right",
+                        "none"
+                    ]
+                }
+            }
+        },
+        "ActionList": {
+            "type": "object",
+            "properties": {
+                "action_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            }
+        },
+        "Success": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "More info",
+        "url": "https://github.com/kleisauke/EV3-API"
+    }
+}

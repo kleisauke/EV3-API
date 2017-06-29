@@ -1,0 +1,55 @@
+{
+    "movement": {
+        "left": {
+            "address": "outB",
+            "type": "large"
+        },
+        "right": {
+            "address": "outA",
+            "type": "large"
+        }
+    },
+    "motors": {
+        "outC": "medium"
+    },
+    "sensors": {
+        "in1": "touch"
+    },
+    "actions": [
+        {
+            "address": "in1",
+            "action": "is_pressed",
+            "condition": {
+                "compare_with": 1,
+                "comparison": "=="
+            },
+            "when_false": [],
+            "when_true": [
+                {
+                    "method": "POST",
+                    "url": "/api/sound/0/"
+                },
+                {
+                    "method": "POST",
+                    "url": "/api/movement/left/100",
+                    "wait": 5
+                },
+                {
+                    "method": "POST",
+                    "url": "/api/movement/right/100",
+                    "wait": 5
+                },
+                {
+                    "method": "POST",
+                    "url": "/api/movement/forward/0"
+                }
+            ]
+        }
+    ],
+    "images": [
+        "images/awake.bmp"
+    ],
+    "sounds": [
+        "sounds/dundundun.wav"
+    ]
+}

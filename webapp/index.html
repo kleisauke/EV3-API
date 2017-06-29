@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lego Mindstorms Webapp</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Main css -->
+    <link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Lego Mindstorms Webapp</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#robot-control" data-toggle="tab">Control Center</a></li>
+                <li><a href="#config" data-toggle="tab">Configuration</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container">
+    <div class="tab-content">
+        <div class="tab-pane active" id="robot-control">
+            <div class="panel panel-default">
+                <div class="panel-heading">History</div>
+                <ul class="list-group" id="history-output"></ul>
+            </div>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label class="sr-only" for="speed">Motor Speed</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">Motor Speed</div>
+                        <input class="form-control" type="number" id="speed" min="0" max="100" value="100">
+                    </div>
+                </div>
+            </form>
+            <button class="panic-button" id="killSwitch" type="button" name="button">Kill Switch</button>
+            <ul class="keys">
+                <li id="up-arrow" class="key" data-direction="forward">&uarr;<span>Forward</span></li>
+                <li id="right-arrow" class="key" data-direction="right">&rarr;<span>Right</span></li>
+                <li id="down-arrow" class="key" data-direction="backward">&darr;<span>Backward</span></li>
+                <li id="left-arrow" class="key" data-direction="left">&larr;<span>Left</span></li>
+            </ul>
+        </div>
+        <div class="tab-pane" id="config">
+            <h4>Movement configuration</h4>
+            <table class="table">
+                <tr>
+                    <th>Part</th>
+                    <th>Address</th>
+                    <th>Type</th>
+                </tr>
+                <tr>
+                    <td>Left Motor</td>
+                    <td>
+                        <select class="form-control" id="leftSide">
+                            <option>outA</option>
+                            <option selected="selected">outB</option>
+                            <option>outC</option>
+                            <option>outD</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control" id="leftType">
+                            <option selected="selected">large</option>
+                            <option>medium</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Right Motor</td>
+                    <td>
+                        <select class="form-control" id="rightSide">
+                            <option selected="selected">outA</option>
+                            <option>outB</option>
+                            <option>outC</option>
+                            <option>outD</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control" id="rightType">
+                            <option selected="selected">large</option>
+                            <option>medium</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <input class="btn pull-right" id="submitConfig" type="submit" value="Submit">
+        </div>
+    </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/webapp.js"></script>
+</body>
+</html>
